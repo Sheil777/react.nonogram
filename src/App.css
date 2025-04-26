@@ -1,0 +1,49 @@
+.App {
+  
+}
+
+.Field {
+  
+}
+
+.Row {
+  display: flex;
+}
+
+.Area {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.Area_numbers {
+  background-color: #dbdbdb;
+}
+
+.Area__row {
+  display: flex;
+  
+}
+
+.Cell {
+  display: flex;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  
+  border: 1px solid black;
+}
+
+.Cell_painted {
+  background: black;
+}
+
+.Cell_empty::after {
+  content: '\00D7';
+}
+
+.Area_empty .Area__row .Cell{
+  border: 1px solid transparent;
+}
