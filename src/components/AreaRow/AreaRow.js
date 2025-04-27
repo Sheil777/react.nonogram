@@ -5,12 +5,18 @@ const AreaRow = props => {
         if(el.target.classList.contains('Cell_empty'))
             el.target.classList.remove('Cell_empty')
 
-
+        // Меняем окрас
         if(!el.target.classList.contains('Cell_painted'))
             el.target.classList.add('Cell_painted')
         else
             el.target.classList.remove('Cell_painted')
         
+
+        // Получаем адрес ячейки по которой кликнули
+        const rowNumber = el.target.dataset.rowNumber
+        // const columnNumber = el.target.dataset.columnNumber
+        // console.log("Row: ", rowNumber, " Column: ", columnNumber)
+        props.analysis(rowNumber)
     }
 
     function emptyCellHandler(el) {
@@ -27,28 +33,23 @@ const AreaRow = props => {
             el.target.classList.remove('Cell_empty')
     }
 
+
+
     return (
         <div className='Area__row'>
-            <div className='Cell' 
-                onClick={paintHandler}
-                onContextMenu={emptyCellHandler}
-            ></div>
-            <div className='Cell' 
-                onClick={paintHandler}
-                onContextMenu={emptyCellHandler}
-            ></div>
-            <div className='Cell' 
-                onClick={paintHandler}
-                onContextMenu={emptyCellHandler}
-            ></div>
-            <div className='Cell' 
-                onClick={paintHandler}
-                onContextMenu={emptyCellHandler}
-            ></div>
-            <div className='Cell' 
-                onClick={paintHandler}
-                onContextMenu={emptyCellHandler}
-            ></div>
+            {
+                Array.from({length: 5}, (_,index) => (
+                    <div className='Cell' 
+                        key={ index + Number(props.startColumn) }
+                        onClick={paintHandler}
+                        onContextMenu={emptyCellHandler}
+                        data-row-number={props.rowNumber}
+                        data-column-number={index + Number(props.startColumn)}
+                    ></div>
+                ))
+            }
+
+            
         </div>
     )
 }
