@@ -14,9 +14,9 @@ const AreaRow = props => {
 
         // Получаем адрес ячейки по которой кликнули
         const rowNumber = el.target.dataset.rowNumber
-        // const columnNumber = el.target.dataset.columnNumber
+        const columnNumber = el.target.dataset.columnNumber
         // console.log("Row: ", rowNumber, " Column: ", columnNumber)
-        props.analysis(rowNumber)
+        props.analysis(rowNumber, columnNumber)
     }
 
     function emptyCellHandler(el) {
